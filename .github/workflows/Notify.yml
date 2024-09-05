@@ -20,5 +20,5 @@ jobs:
     - name: Notify
       run: |
              echo "Simulate Notification"
-             echo "${{github.event.workflow_run.jobs_url}}"
+             echo "job URL: ${{github.server_url}}/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ github.job }}"
             
