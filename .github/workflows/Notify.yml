@@ -2,7 +2,7 @@ name: Notify
 
 on:
   workflow_run:
-    workflows: ["Parent Workflow"]
+    workflows: ["Build"]
     types:
       - completed
 
