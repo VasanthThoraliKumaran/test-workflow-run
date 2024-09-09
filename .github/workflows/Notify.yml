@@ -2,7 +2,7 @@ name: Notify
 
 on:
   workflow_run:
-    workflows: ["Build"]
+    workflows: ["Parent Workflow"]
     types:
       - completed
 
@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Use output from parent workflow
-      run: |
-              echo "Parent workflow output: ${{ github.event.workflow_run.outputs.my_output }}"
+    - name: Download the artifact from the parent workflow
+      uses: actions/download-artifact@v3
+      with:
+        name: parent-output
+        path: ./artifact
+
+    - name: Read the file content
+      run: cat ./artifact/output.txt
