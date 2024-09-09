@@ -1,24 +1,16 @@
 name: Notify
 
-# Controls when the action will run. Triggers the workflow on push or pull request events.
 on:
   workflow_run:
-    workflows: [Build]
+    workflows: ["Build"]
     types:
-        - completed
+      - completed
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel.
 jobs:
-  notify:
-
-    # The type of machine to run on.
+  use-parent-output:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job.
     steps:
-    - uses: actions/checkout@v4
-    - name: Notify
+    - name: Use output from parent workflow
       run: |
-             echo "Simulate Notification"
-             echo "job URL: ${{github.server_url}}/${{ github.repository }}/actions/runs/${{ github.event.workflow_run.id }}"
-            
+              echo "Parent workflow output: ${{ github.event.workflow_run.outputs.my_output }}"
