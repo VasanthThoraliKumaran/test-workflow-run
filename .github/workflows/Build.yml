@@ -1,15 +1,19 @@
 name: Build
 
 on:
-  workflow_dispatch:  # Trigger this workflow manually for simplicity
+  workflow_dispatch:  # Trigger this workflow manually
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      my_output: ${{ steps.output_step.outputs.example }}
 
     steps:
-    - name: Generate an output
-      id: output_step
-      run: echo "::set-output name=example::Hello from the parent workflow!"
+    - name: Create a file with data to pass
+      run: echo "Hello from the parent workflow!" > output.txt
+
+    - name: Upload the artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: parent-output
+        path: output.txt
+
