@@ -1,30 +1,15 @@
 name: Build
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Trigger this workflow manually for simplicity
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     outputs:
-      is_deploy: ${{ steps.set_output.outputs.is_deploy }}
+      my_output: ${{ steps.output_step.outputs.example }}
 
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Build
-      run: echo "Simulating Build"
-
-    - name: Save build data
-      run: echo "build-data content" > build-data.txt  # Simulate build data
-
-    - name: Set is_deploy output
-      id: set_output
-      run: echo "is_deploy=true" >> $GITHUB_ENV
-
-    - name: Upload build artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: build-data
-        path: build-data.txt
+    - name: Generate an output
+      id: output_step
+      run: echo "::set-output name=example::Hello from the parent workflow!"
