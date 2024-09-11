@@ -11,11 +11,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Download the artifact from the parent workflow
-      uses: actions/download-artifact@v3
-      with:
-        name: parent-output
-        path: ./artifact
-
-    - name: Read the file content
-      run: cat ./artifact/output.txt
+    - name: Run
+      run: echo "Parent Workflow!"
