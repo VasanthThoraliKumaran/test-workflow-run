@@ -22,8 +22,12 @@ jobs:
         "Baseline:$revision" | Out-File -FilePath "zoom_info.txt"
       shell: pwsh
 
+    - name: List files in current directory for debugging
+      run: dir
+      shell: cmd
+
     - name: Upload zoom_info.txt artifact
       uses: actions/upload-artifact@v3
       with:
         name: zoom
-        path: ./
+        path: zoom_info.txt  # Ensure only zoom_info.txt is uploaded
