@@ -11,6 +11,14 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - name: List all files in current directory (cmd)
+      run: dir
+      shell: cmd
+
+    - name: List all files in current directory (PowerShell)
+      run: ls
+      shell: pwsh
+      
     - name: Download zoom_info.txt artifact
       uses: actions/download-artifact@v3
       with:
