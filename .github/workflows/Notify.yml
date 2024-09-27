@@ -1,10 +1,10 @@
 name: Notify
 
 on:
-  workflow_run:
-    workflows: ["Build"]
-    types:
-      - completed
+  workflow_dispatch:
+    # workflows: ["Build"]
+    # types:
+    #   - completed
 
 jobs:
   notify:
@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: List files in current directory for debugging
-      run: dir
+      run: dir D:/
       shell: cmd
       
     - name: Download zoom_info.txt artifact
