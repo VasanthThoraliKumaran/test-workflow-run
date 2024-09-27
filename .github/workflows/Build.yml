@@ -17,8 +17,7 @@ jobs:
 
     - name: Read and store build.revision.number in zoom_info.txt
       run: |
-        REVISION=$(grep 'build.revision.number' D:/build/_work/etversion.properties | cut -d '=' -f2)
-        echo "Baseline:$REVISION" > zoom_info.txt
+        for /f "tokens=2 delims==" %%A in ('findstr build.revision.number D:\build\_work\etversion.properties') do echo Baseline:%%A > zoom_info.txt
 
     - name: Upload zoom_info.txt artifact
       uses: actions/upload-artifact@v3
