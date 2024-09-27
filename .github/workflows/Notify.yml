@@ -14,7 +14,7 @@ jobs:
     - name: Download zoom_info.txt artifact
       uses: actions/download-artifact@v3
       with:
-        name: zoom_info.txt
+        name: zoom
         path: ./
 
     - name: Read and display Baseline from zoom_info.txt (PowerShell)
