@@ -17,7 +17,7 @@ jobs:
 
     - name: Read and store build.revision.number in zoom_info.txt (PowerShell)
       run: |
-        $content = Get-Content "F:\build\_work\etversion.properties" | Select-String "build.revision.number"
+        $content = Get-Content "D:\build\_work\etversion.properties" | Select-String "build.revision.number"
         $revision = $content -replace "build.revision.number=", ""
         "Baseline:$revision" | Out-File -FilePath "zoom_info.txt"
       shell: pwsh
