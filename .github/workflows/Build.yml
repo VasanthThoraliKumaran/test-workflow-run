@@ -8,12 +8,16 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Create a file with data to pass
-      run: echo "Hello from the parent workflow!" > output.txt
+    - name: Create etversion.properties
+      run: echo "build.revision.number=100" > F:/build/_work/etversion.properties
 
-    - name: Upload the artifact
+    - name: Read and store build.revision.number in zoom_info.txt
+      run: |
+        REVISION=$(grep 'build.revision.number' F:/build/_work/etversion.properties | cut -d '=' -f2)
+        echo "Baseline:$REVISION" > zoom_info.txt
+
+    - name: Upload zoom_info.txt artifact
       uses: actions/upload-artifact@v3
       with:
-        name: parent-output
-        path: output.txt
-
+        name: build-info
+        path: zoom_info.txt
