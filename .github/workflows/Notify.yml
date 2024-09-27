@@ -7,7 +7,7 @@ on:
       - completed
 
 jobs:
-  use-parent-output:
+  notify:
     runs-on: windows-latest
 
     steps:
@@ -16,12 +16,16 @@ jobs:
       with:
         path: ./
 
-    - name: Read Baseline from zoom_info.txt
-      id: read-baseline
+    - name: Read and display Baseline from zoom_info.txt (PowerShell)
       run: |
-        BASELINE=$(grep 'Baseline' zoom_info.txt | cut -d ':' -f2)
-        echo "Baseline value: $BASELINE"
-      shell: bash
+        $content = Get-Content "zoom_info.txt"
+        if ($content -match "Baseline:(.*)") {
+          $baseline = $matches[1]
+          echo "Baseline value: $baseline"
+        } else {
+          echo "No Baseline value found."
+        }
+      shell: pwsh
 
     - name: Display Baseline value
       run: echo "The Baseline value is ${{ steps.read-baseline.outputs.BASELINE }}"
