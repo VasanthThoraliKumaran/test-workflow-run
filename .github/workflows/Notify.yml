@@ -11,5 +11,18 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Run
-      run: echo "notify Workflow!"
+    - name: Download zoom_info.txt artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: zoom_info
+        path: .
+
+    - name: Read Baseline from zoom_info.txt
+      id: read-baseline
+      run: |
+        BASELINE=$(grep 'Baseline' zoom_info.txt | cut -d ':' -f2)
+        echo "Baseline value: $BASELINE"
+      shell: bash
+
+    - name: Display Baseline value
+      run: echo "The Baseline value is ${{ steps.read-baseline.outputs.BASELINE }}"
