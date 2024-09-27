@@ -25,5 +25,4 @@ jobs:
     - name: Upload zoom_info.txt artifact
       uses: actions/upload-artifact@v3
       with:
-        name: zoom_info
         path: ./
