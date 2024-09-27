@@ -11,6 +11,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - name: List files in current directory for debugging
+      run: dir
+      shell: cmd
+      
     - name: Download zoom_info.txt artifact
       uses: actions/download-artifact@v3
       with:
