@@ -11,13 +11,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: List all files in current directory (cmd)
-      run: dir
+    - name: List files in working directory for debugging
+      run: dir D:\a\test-workflow-run\test-workflow-run
       shell: cmd
-
-    - name: List all files in current directory (PowerShell)
-      run: ls
-      shell: pwsh
       
     - name: Download zoom_info.txt artifact
       uses: actions/download-artifact@v3
