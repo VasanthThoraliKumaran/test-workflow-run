@@ -13,11 +13,11 @@ jobs:
         mkdir "D:\build\_work"
         
     - name: Create etversion.properties
-      run: echo "build.revision.number=100" > F:/build/_work/etversion.properties
+      run: echo "build.revision.number=100" > D:/build/_work/etversion.properties
 
     - name: Read and store build.revision.number in zoom_info.txt
       run: |
-        REVISION=$(grep 'build.revision.number' F:/build/_work/etversion.properties | cut -d '=' -f2)
+        REVISION=$(grep 'build.revision.number' D:/build/_work/etversion.properties | cut -d '=' -f2)
         echo "Baseline:$REVISION" > zoom_info.txt
 
     - name: Upload zoom_info.txt artifact
