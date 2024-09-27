@@ -15,7 +15,6 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: zoom_info
-        path: zoom_info.txt
 
     - name: Read Baseline from zoom_info.txt
       id: read-baseline
