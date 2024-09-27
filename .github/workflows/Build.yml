@@ -15,9 +15,12 @@ jobs:
     - name: Create etversion.properties
       run: echo "build.revision.number=100" > D:/build/_work/etversion.properties
 
-    - name: Read and store build.revision.number in zoom_info.txt
+    - name: Read and store build.revision.number in zoom_info.txt (PowerShell)
       run: |
-        for /f "tokens=2 delims==" %%A in ('findstr build.revision.number D:\build\_work\etversion.properties') do echo Baseline:%%A > zoom_info.txt
+        $content = Get-Content "F:\build\_work\etversion.properties" | Select-String "build.revision.number"
+        $revision = $content -replace "build.revision.number=", ""
+        "Baseline:$revision" | Out-File -FilePath "zoom_info.txt"
+      shell: pwsh
 
     - name: Upload zoom_info.txt artifact
       uses: actions/upload-artifact@v3
