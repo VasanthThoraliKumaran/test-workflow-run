@@ -10,7 +10,9 @@ jobs:
     steps:
     - name: Create F:/build/_work directory if it doesn't exist
       run: |
-        if not exist F:/build/_work mkdir F:/build/_work
+        if not exist "F:\build\_work" (
+          mkdir "F:\build\_work"
+        )
     - name: Create etversion.properties
       run: echo "build.revision.number=100" > F:/build/_work/etversion.properties
 
