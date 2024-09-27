@@ -12,13 +12,14 @@ jobs:
 
     steps:
     - name: List files in current directory for debugging
-      run: dir D:/
+      run: |
+          "D:"
       shell: cmd
       
     - name: Download zoom_info.txt artifact
       uses: actions/download-artifact@v3
       with:
-        name: zoom
+        name: zoom_info.txt
         path: ./
 
     - name: Read and display Baseline from zoom_info.txt (PowerShell)
