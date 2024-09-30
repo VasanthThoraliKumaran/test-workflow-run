@@ -9,7 +9,7 @@ on:
 
 jobs:
   read:
-    runs-on: windows-latest  # Using Windows runner
+    runs-on: ubuntu-latest  # Using Windows runner
 
     steps:
     - name: Download my-artifact
@@ -17,9 +17,3 @@ jobs:
       with:
         name: my-artifact  # Matches the artifact name from Store Artifact workflow
         path: ./           # Downloads to current directory
-
-    - name: List files in current directory for debugging
-      run: dir  # List files in current directory
-
-    - name: Read and display contents of data.txt
-      run: type data.txt  # Read and display contents of data.txt
