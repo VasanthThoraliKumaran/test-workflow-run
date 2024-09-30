@@ -17,3 +17,4 @@ jobs:
       with:
         name: my-artifact  # Matches the artifact name from Store Artifact workflow
         path: ./           # Downloads to current directory
+        run-id: ${{ github.event.workflow_run.id }}
