@@ -9,7 +9,7 @@ on:
 
 jobs:
   read:
-    runs-on: ubuntu-latest  # Using Windows runner
+    runs-on: windows-latest  # Using Windows runner
 
     steps:
     - name: Download my-artifact
