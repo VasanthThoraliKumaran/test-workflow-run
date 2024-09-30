@@ -1,33 +1,19 @@
-name: Build
+# File: .github/workflows/store-artifact.yml
+name: Store Artifact
 
 on:
   workflow_dispatch:  # Trigger this workflow manually
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-latest  # Using Windows runner
 
     steps:
-    - name: Create D:/build/_work directory if it doesn't exist
-      run: |
-        mkdir "D:\build\_work"
-        
-    - name: Create etversion.properties
-      run: echo "build.revision.number=100" > D:/build/_work/etversion.properties
+    - name: Create data.txt
+      run: echo "This is some sample data." > data.txt
 
-    - name: Read and store build.revision.number in zoom_info.txt (PowerShell)
-      run: |
-        $content = Get-Content "D:\build\_work\etversion.properties" | Select-String "build.revision.number"
-        $revision = $content -replace "build.revision.number=", ""
-        "Baseline:$revision" | Out-File -FilePath "zoom_info.txt"
-      shell: pwsh
-
-    - name: List files in current directory for debugging
-      run: dir
-      shell: cmd
-
-    - name: Upload zoom_info.txt artifact
+    - name: Upload data.txt as an artifact
       uses: actions/upload-artifact@v3
       with:
-        name: zoom
-        path: zoom_info.txt  # Ensure only zoom_info.txt is uploaded
+        name: my-artifact
+        path: data.txt  # Uploads only data.txt
