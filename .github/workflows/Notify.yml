@@ -1,36 +1,25 @@
-name: Notify
+# File: .github/workflows/read-artifact.yml
+name: Read Artifact
 
 on:
-  workflow_dispatch:
-    # workflows: ["Build"]
-    # types:
-    #   - completed
+  workflow_run:
+    workflows: ["Store Artifact"]  # Trigger after Store Artifact workflow completes
+    types:
+      - completed
 
 jobs:
-  notify:
-    runs-on: windows-latest
+  read:
+    runs-on: windows-latest  # Using Windows runner
 
     steps:
-    - name: List files in working directory for debugging
-      run: dir D:\a\test-workflow-run\test-workflow-run
-      shell: cmd
-      
-    - name: Download zoom_info.txt artifact
+    - name: Download my-artifact
       uses: actions/download-artifact@v3
       with:
-        name: zoom
-        path: ./
+        name: my-artifact  # Matches the artifact name from Store Artifact workflow
+        path: ./           # Downloads to current directory
 
-    - name: Read and display Baseline from zoom_info.txt (PowerShell)
-      run: |
-        $content = Get-Content "zoom_info.txt"
-        if ($content -match "Baseline:(.*)") {
-          $baseline = $matches[1]
-          echo "Baseline value: $baseline"
-        } else {
-          echo "No Baseline value found."
-        }
-      shell: pwsh
+    - name: List files in current directory for debugging
+      run: dir  # List files in current directory
 
-    - name: Display Baseline value
-      run: echo "The Baseline value is ${{ steps.read-baseline.outputs.BASELINE }}"
+    - name: Read and display contents of data.txt
+      run: type data.txt  # Read and display contents of data.txt
