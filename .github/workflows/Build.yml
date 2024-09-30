@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  # Using Windows runner
+    runs-on: ubuntu-latest  # Using Windows runner
 
     steps:
     - name: Create data.txt
