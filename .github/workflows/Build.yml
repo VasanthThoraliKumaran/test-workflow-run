@@ -25,9 +25,6 @@ jobs:
       run: dir /S /AD
       shell: cmd
 
-    - name: Check if the test directory exists
-      run: if exist test (echo "test directory exists") else (echo "test directory not found")
-
     - name: Download my-artifact
       uses: actions/download-artifact@v4
       with:
