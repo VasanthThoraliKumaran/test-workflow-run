@@ -14,10 +14,6 @@ jobs:
     runs-on: windows-latest  # Using Windows runner
 
     steps:
-    - name: List Artifact Contents
-      run: dir /S /AD
-      shell: cmd
-
     - name: Download my-artifact
       uses: actions/download-artifact@v4
       with:
@@ -26,3 +22,7 @@ jobs:
         github-token: ${{ github.token }}
         repository: ${{ github.repository }}
         run-id: ${{ github.event.workflow_run.id }}
+        
+    - name: List Artifact Contents
+      run: dir /S /AD
+      shell: cmd
