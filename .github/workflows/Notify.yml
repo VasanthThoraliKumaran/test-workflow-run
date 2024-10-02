@@ -24,5 +24,7 @@ jobs:
         run-id: ${{ github.event.workflow_run.id }}
         
     - name: List Artifact Contents
-      run: dir /S /AD
-      shell: cmd
+      run: ls -R
+
+    - name: Display content of data.txt
+      run: type ./data.txt
