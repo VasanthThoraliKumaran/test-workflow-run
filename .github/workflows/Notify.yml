@@ -14,12 +14,12 @@ jobs:
     runs-on: windows-latest  # Using Windows runner
 
     steps:
+    - name: List Artifact Contents
+      run: ls -R
+
     - name: Download my-artifact
       uses: actions/download-artifact@v4
       with:
         name: my-artifact
-        path: ${{ github.workspace }}/test/data.txt
         run-id: ${{ github.event.workflow_run.id }}
-        
-    - name: Display structure of downloaded files
-      run: ls -R
+        path: ${{ github.workspace }}/test/data.txt
