@@ -1,6 +1,8 @@
 # File: .github/workflows/read-artifact.yml
 name: Read Artifact
 
+permissions: all
+
 on:
   workflow_run:
     workflows: ["Store Artifact"]  # Trigger after Store Artifact workflow completes
