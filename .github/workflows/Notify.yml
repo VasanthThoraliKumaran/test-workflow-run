@@ -18,12 +18,7 @@ jobs:
       run: dir /S /AD
       shell: cmd
 
-    - name: Check if the test directory exists
-      run: if exist test (echo "test directory exists") else (echo "test directory not found")
-
     - name: Download my-artifact
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v3
       with:
         name: my-artifact
-        run-id: ${{ github.event.workflow_run.id }}
-        path: ${{ github.workspace }}/test/data.txt
