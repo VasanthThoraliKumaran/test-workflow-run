@@ -9,8 +9,11 @@ jobs:
     runs-on: windows-latest  # Using Windows runner
 
     steps:
-    - name: Create data.txt
-      run: echo "This is some sample data." > data.txt
+    - name: Create test directory
+      run: mkdir test
+
+    - name: Create data.txt in test directory
+      run: echo "This is some sample data." > test/data.txt
 
     - name: Upload data.txt as an artifact
       uses: actions/upload-artifact@v4
