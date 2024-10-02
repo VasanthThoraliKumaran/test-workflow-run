@@ -16,10 +16,12 @@ jobs:
       run: echo "This is some sample data." > test/data.txt
 
     - name: Upload data.txt as an artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: my-artifact
-        path: ${{ github.workspace }}/test/data.txt
+        path: /test/data.txt
+        overwrite: true
+        
 
     - name: List Artifact Contents
       run: dir /S /AD
