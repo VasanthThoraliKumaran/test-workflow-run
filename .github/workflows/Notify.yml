@@ -4,10 +4,10 @@ name: Read Artifact
 permissions: write-all
 
 on:
-  workflow_run:
-    workflows: ["Store Artifact"]  # Trigger after Store Artifact workflow completes
-    types:
-      - completed
+  workflow_dispatch:
+    # workflows: ["Store Artifact"]  # Trigger after Store Artifact workflow completes
+    # types:
+    #   - completed
 
 jobs:
   read:
@@ -23,4 +23,4 @@ jobs:
       with:
         name: my-artifact
         run-id: ${{ github.event.workflow_run.id }}
-        path: ${{ github.workspace }}\test\data.txt
+        path: ${{ github.workspace }}/test/data.txt
