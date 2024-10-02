@@ -20,4 +20,10 @@ jobs:
       with:
         name: my-artifact
         path: ${{ github.workspace }}/test/data.txt
+
+    - name: List Files
+      run: dir /s
+      shell: cmd
+
+
         
