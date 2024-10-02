@@ -23,4 +23,5 @@ jobs:
       with:
         name: my-artifact
         github-token: ${{ github.token }}
+        repository: ${{ github.repository }}
         run-id: ${{ github.event.workflow_run.id }}
