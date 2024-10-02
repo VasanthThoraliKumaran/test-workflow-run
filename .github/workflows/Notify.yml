@@ -16,7 +16,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: my-artifact
-        path: ${{ github.workspace }}/test
+        path: ${{ github.workspace }}/test/data.txt
         run-id: ${{ github.event.workflow_run.id }}
         
     - name: Display structure of downloaded files
