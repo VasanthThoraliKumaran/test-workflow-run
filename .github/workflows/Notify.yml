@@ -15,8 +15,9 @@ jobs:
     - name: Download my-artifact
       uses: actions/download-artifact@v2
       with:
-        name: my-artifact  # Matches the artifact name from Store Artifact workflow
-        path: data.txt
+        name: my-artifact
+        path: ${{ github.workspace }}/test
         run-id: ${{ github.event.workflow_run.id }}
+        
     - name: Display structure of downloaded files
       run: ls -R
