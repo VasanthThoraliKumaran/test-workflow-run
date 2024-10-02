@@ -16,7 +16,7 @@ jobs:
       run: echo "This is some sample data." > test/data.txt
 
     - name: Upload data.txt as an artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: my-artifact
         path: ${{ github.workspace }}/test/data.txt
@@ -26,10 +26,9 @@ jobs:
       shell: cmd
 
     - name: Download my-artifact
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v3
       with:
         name: my-artifact
         run-id: ${{ github.event.workflow_run.id }}
-        path: ${{ github.workspace }}/test/data.txt
 
         
