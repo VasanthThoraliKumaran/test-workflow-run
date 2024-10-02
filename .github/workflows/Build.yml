@@ -16,5 +16,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: my-artifact
-        path: ${{ github.workspace }}/test
+        path: ${{ github.workspace }}/test/data.txt
         
