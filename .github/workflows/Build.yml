@@ -13,7 +13,8 @@ jobs:
       run: echo "This is some sample data." > data.txt
 
     - name: Upload data.txt as an artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: my-artifact
-        path: data.txt  # Uploads only data.txt
+        path: ${{ github.workspace }}/test
+        
