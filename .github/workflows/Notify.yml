@@ -16,10 +16,11 @@ jobs:
     steps:
     - name: List Artifact Contents
       run: dir /s
+      shell: cmd
 
     - name: Download my-artifact
       uses: actions/download-artifact@v4
       with:
         name: my-artifact
         run-id: ${{ github.event.workflow_run.id }}
-        path: ${{ github.workspace }}/test/data.txt
+        path: ${{ github.workspace }}\test\data.txt
