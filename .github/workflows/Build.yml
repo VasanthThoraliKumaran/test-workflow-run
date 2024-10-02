@@ -22,15 +22,6 @@ jobs:
         path: /test/data.txt
         overwrite: true
         
-
     - name: List Artifact Contents
       run: dir /S /AD
       shell: cmd
-
-    - name: Download my-artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: my-artifact
-        run-id: ${{ github.event.workflow_run.id }}
-
-        
