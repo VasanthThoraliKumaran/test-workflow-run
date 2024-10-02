@@ -1,7 +1,7 @@
 # File: .github/workflows/read-artifact.yml
 name: Read Artifact
 
-permissions: all
+permissions: write-all
 
 on:
   workflow_run:
