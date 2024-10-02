@@ -4,10 +4,10 @@ name: Read Artifact
 permissions: write-all
 
 on:
-  workflow_dispatch:
-    # workflows: ["Store Artifact"]  # Trigger after Store Artifact workflow completes
-    # types:
-    #   - completed
+  workflow_run:
+    workflows: ["Store Artifact"]  # Trigger after Store Artifact workflow completes
+    types:
+      - completed
 
 jobs:
   read:
@@ -19,7 +19,7 @@ jobs:
       shell: cmd
 
     - name: Download my-artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: my-artifact
         github-token: ${{ github.token }}
