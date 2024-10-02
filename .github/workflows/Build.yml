@@ -19,7 +19,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: my-artifact
-        path: /test
+        path: test/
         overwrite: true
         
     - name: List Artifact Contents
