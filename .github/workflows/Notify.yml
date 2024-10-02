@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: List Artifact Contents
-      run: ls -R
+      run: dir /s
 
     - name: Download my-artifact
       uses: actions/download-artifact@v4
