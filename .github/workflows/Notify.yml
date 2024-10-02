@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: List Artifact Contents
-      run: dir /s
+      run: dir
       shell: cmd
 
     - name: Download my-artifact
