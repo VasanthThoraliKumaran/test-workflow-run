@@ -22,3 +22,5 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: my-artifact
+        github-token: ${{ github.token }}
+        run-id: ${{ github.event.workflow_run.id }}
